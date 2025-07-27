@@ -1,0 +1,32 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_agenda"
+        android:icon="@drawable/ic_event"
+        android:title="Agenda"/>
+    <item
+        android:id="@+id/nav_converter"
+        android:icon="@drawable/ic_swap_horiz"
+        android:title="Converter"/>
+    <item
+        android:id="@+id/nav_settings"
+        android:icon="@drawable/ic_settings"
+        android:title="Settings"/>
+    <group android:checkableBehavior="none">
+        <item
+            android:id="@+id/nav_help"
+            android:icon="@drawable/ic_help"
+            android:title="Help/Feedback"/>
+        <item
+            android:id="@+id/nav_share"
+            android:icon="@drawable/ic_share"
+            android:title="Share"/>
+        <item
+            android:id="@+id/nav_rate"
+            android:icon="@drawable/ic_rate"
+            android:title="Rate"/>
+        <item
+            android:id="@+id/nav_about"
+            android:icon="@drawable/ic_info"
+            android:title="About"/>
+    </group>
+</menu>

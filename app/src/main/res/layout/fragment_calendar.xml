@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Ethiopian header -->
+    <LinearLayout
+        android:id="@+id/et_header"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:background="@color/calendarHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvEtDayName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Wednesday"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/tvEtDayNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="16"
+            android:textColor="@android:color/white"
+            android:textSize="72sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/tvEtMonthYear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hamle 2017"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"/>
+    </LinearLayout>
+
+    <!-- Gregorian date display -->
+    <TextView
+        android:id="@+id/tvEnDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="16dp"
+        android:paddingTop="8dp"
+        android:text="July 23, 2025"
+        android:textSize="14sp"/>
+
+    <!-- The calendar itself -->
+    <com.prolificinteractive.materialcalendarview.MaterialCalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        app:mcv_showOtherDates="all"
+        app:mcv_selectionColor="@color/calendarHeader"/>
+
+    <!-- Placeholder for "no events" -->
+    <TextView
+        android:id="@+id/tvPlaceholder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:text="There doesn’t seem to be anything for today. Press the “+” icon to add an appointment."
+        android:textColor="#888"
+        android:textSize="14sp"/>
+</LinearLayout>

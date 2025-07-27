@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.calender">
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+
+    <application
+        android:label="@string/app_name"
+        android:theme="@style/Theme.Calendar">
+
+        <receiver
+            android:name=".DateChangeReceiver"
+            android:exported="true">
+            <intent-filter>
+                <!-- Fires at every midnight when the date rolls over -->
+                <action android:name="android.intent.action.DATE_CHANGED"/>
+                <!-- Fires after a timezone change (so date logic stays correct) -->
+                <action android:name="android.intent.action.TIMEZONE_CHANGED"/>
+                <!-- Fires when the device finishes booting -->
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+
+
+        <!-- Internal activity, not shown in launcher -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+
+        <!-- Alias for day 01 (enabled by default) -->
+        <activity-alias
+            android:name=".CalendarDay01"
+            android:enabled="true"
+            android:exported="true"
+            android:icon="@mipmap/ic_calendar_01"
+            android:roundIcon="@mipmap/ic_calendar_01"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+
+        <!-- Aliases for days 02–31 (all disabled by default) -->
+        <activity-alias
+            android:name=".CalendarDay02"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_calendar_02"
+            android:roundIcon="@mipmap/ic_calendar_02"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+        <activity-alias android:name=".CalendarDay03" android:enabled="false" android:exported="true"
+            android:icon="@mipmap/ic_calendar_03" android:roundIcon="@mipmap/ic_calendar_03"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+        <activity-alias android:name=".CalendarDay04" android:enabled="false" android:exported="true"
+            android:icon="@mipmap/ic_calendar_04" android:roundIcon="@mipmap/ic_calendar_04"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+        <activity-alias android:name=".CalendarDay05" android:enabled="false" android:exported="true"
+            android:icon="@mipmap/ic_calendar_05" android:roundIcon="@mipmap/ic_calendar_05"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+        <activity-alias android:name=".CalendarDay06" android:enabled="false" android:exported="true"
+            android:icon="@mipmap/ic_calendar_06" android:roundIcon="@mipmap/ic_calendar_06"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+        <activity-alias android:name=".CalendarDay07" android:enabled="false" android:exported="true"
+            android:icon="@mipmap/ic_calendar_07" android:roundIcon="@mipmap/ic_calendar_07"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+        <activity-alias android:name=".CalendarDay08" android:enabled="false" android:exported="true"
+            android:icon="@mipmap/ic_calendar_08" android:roundIcon="@mipmap/ic_calendar_08"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+        <activity-alias android:name=".CalendarDay09" android:enabled="false" android:exported="true"
+            android:icon="@mipmap/ic_calendar_09" android:roundIcon="@mipmap/ic_calendar_09"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+        <activity-alias android:name=".CalendarDay10" android:enabled="false" android:exported="true"
+            android:icon="@mipmap/ic_calendar_10" android:roundIcon="@mipmap/ic_calendar_10"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+        <activity-alias android:name=".CalendarDay11" android:enabled="false" android:exported="true"
+            android:icon="@mipmap/ic_calendar_11" android:roundIcon="@mipmap/ic_calendar_11"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+        <activity-alias android:name=".CalendarDay12" android:enabled="false" android:exported="true"
+            android:icon="@mipmap/ic_calendar_12" android:roundIcon="@mipmap/ic_calendar_12"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+        <activity-alias android:name=".CalendarDay13" android:enabled="false" android:exported="true"
+            android:icon="@mipmap/ic_calendar_13" android:roundIcon="@mipmap/ic_calendar_13"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+        <activity-alias android:name=".CalendarDay14" android:enabled="false" android:exported="true"
+            android:icon="@mipmap/ic_calendar_14" android:roundIcon="@mipmap/ic_calendar_14"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+        <activity-alias android:name=".CalendarDay15" android:enabled="false" android:exported="true"
+            android:icon="@mipmap/ic_calendar_15" android:roundIcon="@mipmap/ic_calendar_15"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+        <activity-alias android:name=".CalendarDay16" android:enabled="false" android:exported="true"
+            android:icon="@mipmap/ic_calendar_16" android:roundIcon="@mipmap/ic_calendar_16"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+        <activity-alias android:name=".CalendarDay17" android:enabled="false" android:exported="true"
+            android:icon="@mipmap/ic_calendar_17" android:roundIcon="@mipmap/ic_calendar_17"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+        <activity-alias android:name=".CalendarDay18" android:enabled="false" android:exported="true"
+            android:icon="@mipmap/ic_calendar_18" android:roundIcon="@mipmap/ic_calendar_18"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+        <activity-alias android:name=".CalendarDay19" android:enabled="false" android:exported="true"
+            android:icon="@mipmap/ic_calendar_19" android:roundIcon="@mipmap/ic_calendar_19"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+        <activity-alias android:name=".CalendarDay20" android:enabled="false" android:exported="true"
+            android:icon="@mipmap/ic_calendar_20" android:roundIcon="@mipmap/ic_calendar_20"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+        <activity-alias android:name=".CalendarDay21" android:enabled="false" android:exported="true"
+            android:icon="@mipmap/ic_calendar_21" android:roundIcon="@mipmap/ic_calendar_21"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+        <activity-alias android:name=".CalendarDay22" android:enabled="false" android:exported="true"
+            android:icon="@mipmap/ic_calendar_22" android:roundIcon="@mipmap/ic_calendar_22"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+        <activity-alias android:name=".CalendarDay23" android:enabled="false" android:exported="true"
+            android:icon="@mipmap/ic_calendar_23" android:roundIcon="@mipmap/ic_calendar_23"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+        <activity-alias android:name=".CalendarDay24" android:enabled="false" android:exported="true"
+            android:icon="@mipmap/ic_calendar_24" android:roundIcon="@mipmap/ic_calendar_24"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+        <activity-alias android:name=".CalendarDay25" android:enabled="false" android:exported="true"
+            android:icon="@mipmap/ic_calendar_25" android:roundIcon="@mipmap/ic_calendar_25"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+        <activity-alias android:name=".CalendarDay26" android:enabled="false" android:exported="true"
+            android:icon="@mipmap/ic_calendar_26" android:roundIcon="@mipmap/ic_calendar_26"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+        <activity-alias android:name=".CalendarDay27" android:enabled="false" android:exported="true"
+            android:icon="@mipmap/ic_calendar_27" android:roundIcon="@mipmap/ic_calendar_27"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+        <activity-alias android:name=".CalendarDay28" android:enabled="false" android:exported="true"
+            android:icon="@mipmap/ic_calendar_28" android:roundIcon="@mipmap/ic_calendar_28"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+        <activity-alias android:name=".CalendarDay29" android:enabled="false" android:exported="true"
+            android:icon="@mipmap/ic_calendar_29" android:roundIcon="@mipmap/ic_calendar_29"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+        <activity-alias android:name=".CalendarDay30" android:enabled="false" android:exported="true"
+            android:icon="@mipmap/ic_calendar_30" android:roundIcon="@mipmap/ic_calendar_30"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+
+        <activity-alias android:name=".CalendarDay31" android:enabled="false" android:exported="true"
+            android:icon="@mipmap/ic_calendar_31" android:roundIcon="@mipmap/ic_calendar_31"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+
+    </application>
+</manifest>

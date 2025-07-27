@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Calendar Icon App</string>
+    <string name="launch_instructions">
+        Tap the launcher icon to open; press the button to show today’s date.
+    </string>
+    <string name="show_date">Show Today’s Date</string>
+    <string name="nav_open">Open navigation drawer</string>
+    <string name="nav_close">Close navigation drawer</string>
+    <string name="btn_start">Start</string>
+    <string name="user_agreement">User Agreement</string>
+    <string name="privacy_policy">Privacy Policy</string>
+
+
+</resources>

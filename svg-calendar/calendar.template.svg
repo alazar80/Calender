@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 512 512"
+     aria-label="Calendar"
+     role="img">
+
+  <!-- 1) Background -->
+  <rect width="512" height="512" rx="80" fill="#e0e7ec"/>
+
+  <!-- 2) Header bar -->
+  <path d="M80,0 H432 A80,80 0 0 1 512,80 V200 H0 V80 A80,80 0 0 1 80,0 Z"
+        fill="#dd2f45"/>
+
+  <!-- 3) Binding rings -->
+  <g fill="#f3aab9">
+    <circle cx="360" cy="80" r="12"/>
+    <circle cx="320" cy="80" r="12"/>
+    <circle cx="280" cy="80" r="12"/>
+  </g>
+
+  <!-- 4) Month (centered in header) -->
+  <text id="month"
+        x="256" y="124"
+        fill="#ffffff"
+        font-family="monospace"
+        font-size="64px"
+        text-anchor="middle">
+    {{MONTH}}
+  </text>
+
+  <!-- 5) Day of month (big and centered) -->
+  <text id="day"
+        x="256" y="312"
+        fill="#66757f"
+        font-family="monospace"
+        font-size="256px"
+        text-anchor="middle">
+    {{DAY}}
+  </text>
+
+  <!-- 6) Weekday (below day) -->
+  <text id="weekday"
+        x="256" y="396"
+        fill="#66757f"
+        font-family="monospace"
+        font-size="64px"
+        text-anchor="middle">
+    {{WEEKDAY}}
+  </text>
+</svg>
