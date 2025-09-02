@@ -22,7 +22,7 @@
 - UI: AppCompat/Material, `ViewBinding`/`RecyclerView` (if used)
 
 ---
-(./Calender.png)
+![Braydon's GitHub Banner](./calender.png)
 ---
 
 ## 🚀 Quick Start
