@@ -22,7 +22,7 @@
 - UI: AppCompat/Material, `ViewBinding`/`RecyclerView` (if used)
 
 ---
-(./Calender.jpg)
+(./Calender.png)
 ---
 
 ## 🚀 Quick Start
