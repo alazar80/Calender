@@ -9,6 +9,11 @@
     <string name="btn_start">Start</string>
     <string name="user_agreement">User Agreement</string>
     <string name="privacy_policy">Privacy Policy</string>
-
+    <string name="nav_drawer_open">Open navigation drawer</string>
+    <string name="todo">To-Do</string>
+    <string name="feedbacks_and_suggestions">Feedback &amp; Suggestions</string>
+    <string name="message">Message</string>
+    <string name="Submit">Submit</string>
+    <string name="fitness_goal">Fitness goal</string>
 
 </resources>

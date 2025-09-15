@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="language_array">
+        <item>English</item>
+        <item>Spanish</item>
+        <item>French</item>
+    </string-array>
+
+    <string-array name="fitness_goals">
+        <item>Lose weight</item>
+        <item>Build muscle</item>
+        <item>Maintain</item>
+    </string-array>
+</resources>

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/mainLayout"
     android:background="@drawable/ic_bbackground">
 
     <!-- AppBar with MaterialToolbar -->
@@ -42,7 +43,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="Terms and Conditions"
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="@color/primaryDarkColor"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -58,7 +59,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="135dp"
-        android:padding="@dimen/activity_horizontal_margin"
+        android:padding="2dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
