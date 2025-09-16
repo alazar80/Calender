@@ -13,7 +13,7 @@
 - 🌙 Optional dark theme & Amharic UI strings
 
 ---
-[⬇️ Download the APK](https://github.com/alazar80/Calender/raw/main/calender.apk)
+[⬇️ Download the APK](https://github.com/alazar80/Calender/raw/main/Calender.apk)
 ---
 
 ## 🧱 Tech Stack
