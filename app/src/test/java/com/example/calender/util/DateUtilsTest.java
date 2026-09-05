@@ -35,4 +35,24 @@ public class DateUtilsTest {
 
         assertEquals(ethiopian, convertedBack);
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void rejectsGregorianMonthOutsideRange() {
+        DateUtils.convertGregorianToEthiopian(2025, 13, 1);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void rejectsInvalidGregorianDay() {
+        DateUtils.convertGregorianToEthiopian(2025, 2, 29);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void rejectsEthiopianMonthOutsideRange() {
+        DateUtils.convertEthiopianToGregorian(2018, 14, 1);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void rejectsInvalidPagumenDay() {
+        DateUtils.convertEthiopianToGregorian(2017, 13, 6);
+    }
 }
