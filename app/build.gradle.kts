@@ -110,9 +110,9 @@ tasks.register("generateCalendarIcons") {
                 addTranscodingHint(PNGTranscoder.KEY_HEIGHT, 432f)
             }.also { transcoder ->
                 val input = TranscoderInput(StringReader(svg))
-                val out = pngDir.resolve("ic_calendar_$dd.png").outputStream()
-                transcoder.transcode(input, TranscoderOutput(out))
-                out.close()
+                pngDir.resolve("ic_calendar_$dd.png").outputStream().use { out ->
+                    transcoder.transcode(input, TranscoderOutput(out))
+                }
             }
         }
     }
