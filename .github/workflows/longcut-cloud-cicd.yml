@@ -10,5 +10,4 @@ permissions:
   actions: read
 jobs:
   cloud-build:
-    uses: alazar80/fitness-medical/.github/workflows/longcut-cloud-cicd-reusable.yml@main
-    secrets: inherit
+    uses: alazar80/newproject/.github/workflows/longcut-cloud-cicd-reusable.yml@main
