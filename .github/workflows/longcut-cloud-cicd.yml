@@ -1,0 +1,14 @@
+name: Longcut Cloud CI-CD
+on:
+  push:
+    branches: ['**']
+    tags: ['v*', '*.*.*']
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: write
+  actions: read
+jobs:
+  cloud-build:
+    uses: alazar80/fitness-medical/.github/workflows/longcut-cloud-cicd-reusable.yml@main
+    secrets: inherit
