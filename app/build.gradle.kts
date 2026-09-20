@@ -5,9 +5,6 @@ import org.apache.batik.transcoder.image.PNGTranscoder
 import org.apache.batik.transcoder.TranscoderInput
 import org.apache.batik.transcoder.TranscoderOutput
 import java.io.StringReader
-import java.time.LocalDate
-import java.time.format.TextStyle
-import java.util.Locale
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Batik on the classpath for the buildscript
@@ -82,7 +79,7 @@ dependencies {
 // ─────────────────────────────────────────────────────────────────────────────
 tasks.register("generateCalendarIcons") {
     group = "asset generation"
-    description = "Renders svg-calendar/calendar.template.svg → mipmap/ic_calendar_XX.png"
+    description = "Renders reusable day-number launcher icons from the SVG template"
 
     doLast {
         val tplFile = rootDir.resolve("svg-calendar/calendar.template.svg")
@@ -94,15 +91,13 @@ tasks.register("generateCalendarIcons") {
         val pngDir = file("src/main/res/mipmap-anydpi-v26").apply { mkdirs() }
 
         for (d in 1..31) {
-            val date = LocalDate.of(2025, 7, d)
-            val weekday = date.dayOfWeek.getDisplayName(TextStyle.FULL, Locale.ENGLISH)
-            val month = date.month.getDisplayName(TextStyle.SHORT, Locale.ENGLISH)
-                .uppercase(Locale.ENGLISH)
             val dd = "%02d".format(d)
 
+            // The aliases vary only by day-of-month. Keep the other icon text
+            // timeless so September never shows a July/old-weekday icon.
             val svg = tpl
-                .replace("{{WEEKDAY}}", weekday)
-                .replace("{{MONTH}}", month)
+                .replace("{{WEEKDAY}}", "TODAY")
+                .replace("{{MONTH}}", "DATE")
                 .replace("{{DAY}}", dd)
 
             PNGTranscoder().apply {
