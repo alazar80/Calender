@@ -16,9 +16,7 @@ public class DailyIconWorker extends Worker {
     @Override
     public Result doWork() {
         try {
-            Context ctx = getApplicationContext();
-            MainActivity.updateLauncherIconForToday(ctx);
-            MainActivity.scheduleDailyIconUpdate(ctx);
+            LauncherIconManager.syncAndSchedule(getApplicationContext());
             return Result.success();
         } catch (RuntimeException error) {
             return Result.retry();
