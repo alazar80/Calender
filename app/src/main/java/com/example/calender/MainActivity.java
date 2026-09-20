@@ -1,8 +1,5 @@
 package com.example.calender;
 
-import android.content.ComponentName;
-import android.content.Context;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Button;
@@ -18,16 +15,10 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.material.navigation.NavigationView;
 
-import java.time.Duration;
 import java.time.LocalDate;
-import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.TextStyle;
 import java.util.Locale;
-import java.util.concurrent.TimeUnit;
-import androidx.work.ExistingWorkPolicy;
-import androidx.work.OneTimeWorkRequest;
-import androidx.work.WorkManager;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -54,8 +45,7 @@ public class MainActivity extends AppCompatActivity
 //        displayTodayDate();
 
         // Keep the launcher icon synchronized immediately, then schedule the next rollover.
-        updateLauncherIconForToday(this);
-        scheduleDailyIconUpdate(this);
+        LauncherIconManager.syncAndSchedule(this);
     }
 
     private void bindViews() {
@@ -141,90 +131,13 @@ public class MainActivity extends AppCompatActivity
 //        tvDate.setText(formatted);
 //    }
 
-    /** Your existing logic to flip the alias on launch */
-    /** Flip the alias on launch (static so receivers can call it) */
-            public static void updateLauncherIconForToday(Context ctx) {
-        Context appCtx = ctx.getApplicationContext();
-        PackageManager pm = appCtx.getPackageManager();
-        String pkg = appCtx.getPackageName();
+    @Override
+    protected void onResume() {
+        super.onResume();
 
-        int today = LocalDate.now().getDayOfMonth();
-        ComponentName todayComponent = new ComponentName(
-                pkg,
-                String.format("%s.CalendarDay%02d", pkg, today)
-        );
-
-        // Enable the new icon first so there is never a moment with no launcher entry.
-        setComponentState(
-                pm,
-                todayComponent,
-                PackageManager.COMPONENT_ENABLED_STATE_ENABLED
-        );
-
-        // The generic icon is only a first-install fallback until the app runs once.
-        setComponentState(
-                pm,
-                new ComponentName(pkg, pkg + ".CalendarDefault"),
-                PackageManager.COMPONENT_ENABLED_STATE_DISABLED
-        );
-
-        // Disable every other date icon.
-        for (int d = 1; d <= 31; d++) {
-            if (d == today) {
-                continue;
-            }
-            ComponentName component = new ComponentName(
-                    pkg,
-                    String.format("%s.CalendarDay%02d", pkg, d)
-            );
-            setComponentState(
-                    pm,
-                    component,
-                    PackageManager.COMPONENT_ENABLED_STATE_DISABLED
-            );
-        }
-    }
-
-    private static void setComponentState(
-            PackageManager pm,
-            ComponentName component,
-            int desiredState
-    ) {
-        if (pm.getComponentEnabledSetting(component) != desiredState) {
-            pm.setComponentEnabledSetting(
-                    component,
-                    desiredState,
-                    PackageManager.DONT_KILL_APP
-            );
-        }
-    }
-
-    /** Schedule one resilient update for the next local midnight. */
-    public static void scheduleDailyIconUpdate(Context ctx) {
-        ZonedDateTime now = ZonedDateTime.now();
-        ZonedDateTime nextMidnight = now.toLocalDate()
-                .plusDays(1)
-                .atStartOfDay(now.getZone());
-
-        long delayMillis = Math.max(
-                1_000L,
-                Duration.between(now, nextMidnight).toMillis()
-        );
-
-        OneTimeWorkRequest work = new OneTimeWorkRequest.Builder(DailyIconWorker.class)
-                .setInitialDelay(delayMillis, TimeUnit.MILLISECONDS)
-                .build();
-
-        // Use the target date in the unique name. The worker can safely schedule
-        // tomorrow's job without replacing/cancelling the job that is currently running.
-        String workName = "dailyIconUpdate-" + nextMidnight.toLocalDate();
-
-        WorkManager.getInstance(ctx.getApplicationContext())
-                .enqueueUniqueWork(
-                        workName,
-                        ExistingWorkPolicy.REPLACE,
-                        work
-                );
+        // If Android delayed background work while the device slept,
+        // correct the launcher icon as soon as the user returns to the app.
+        LauncherIconManager.syncAndSchedule(this);
     }
 
     // stubs for non‑fragment menu items:
