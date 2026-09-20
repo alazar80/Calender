@@ -1,8 +1,5 @@
 package com.example.calender;
 
-import android.content.ComponentName;
-import android.content.Context;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Button;
@@ -18,16 +15,10 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.material.navigation.NavigationView;
 
-import java.time.Duration;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.TextStyle;
 import java.util.Locale;
-import java.util.concurrent.TimeUnit;
-import androidx.work.ExistingWorkPolicy;
-import androidx.work.OneTimeWorkRequest;
-import androidx.work.WorkManager;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -53,9 +44,8 @@ public class MainActivity extends AppCompatActivity
         // 3) Optionally show it immediately
 //        displayTodayDate();
 
-        // 4) Launcher‑icon logic unchanged
-//        updateLauncherIconForToday();
-        scheduleDailyIconUpdate(this);
+        // Keep the launcher icon synchronized immediately, then schedule the next rollover.
+        LauncherIconManager.syncAndSchedule(this);
     }
 
     private void bindViews() {
@@ -141,45 +131,13 @@ public class MainActivity extends AppCompatActivity
 //        tvDate.setText(formatted);
 //    }
 
-    /** Your existing logic to flip the alias on launch */
-    /** Flip the alias on launch (static so receivers can call it) */
-            public static void updateLauncherIconForToday(Context ctx) {
-                PackageManager pm = ctx.getPackageManager();
-                String pkg = ctx.getPackageName();  // unchanged
+    @Override
+    protected void onResume() {
+        super.onResume();
 
-        for (int d = 1; d <= 31; d++) {
-            String alias = String.format("%s.CalendarDay%02d", pkg, d);
-            pm.setComponentEnabledSetting(
-                    new ComponentName(pkg, alias),
-                    PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
-                    PackageManager.DONT_KILL_APP
-            );
-        }
-        int today = LocalDate.now().getDayOfMonth();
-        String todayAlias = String.format("%s.CalendarDay%02d", pkg, today);
-        pm.setComponentEnabledSetting(
-                new ComponentName(pkg, todayAlias),
-                PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
-                PackageManager.DONT_KILL_APP
-        );
-    }
-
-    /** Your scheduler to run at next midnight */
-    public static void scheduleDailyIconUpdate(Context ctx) {
-        LocalDateTime now     = LocalDateTime.now();
-        LocalDateTime nextMid = now.toLocalDate().plusDays(1).atStartOfDay();
-        long delayMinutes     = Duration.between(now, nextMid).toMinutes();
-
-        OneTimeWorkRequest w = new OneTimeWorkRequest.Builder(DailyIconWorker.class)
-                .setInitialDelay(delayMinutes, TimeUnit.MINUTES)
-                .build();
-
-        WorkManager.getInstance(ctx)
-                .enqueueUniqueWork(
-                        "dailyIconUpdate",
-                        ExistingWorkPolicy.REPLACE,
-                        w
-                );
+        // If Android delayed background work while the device slept,
+        // correct the launcher icon as soon as the user returns to the app.
+        LauncherIconManager.syncAndSchedule(this);
     }
 
     // stubs for non‑fragment menu items:
