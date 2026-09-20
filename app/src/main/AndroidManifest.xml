@@ -12,12 +12,11 @@
             android:name=".DateChangeReceiver"
             android:exported="true">
             <intent-filter>
-                <!-- Fires at every midnight when the date rolls over -->
-                <action android:name="android.intent.action.DATE_CHANGED"/>
-                <!-- Fires after a timezone change (so date logic stays correct) -->
-                <action android:name="android.intent.action.TIMEZONE_CHANGED"/>
-                <!-- Fires when the device finishes booting -->
+                <!-- Modern Android permits these system broadcasts for manifest receivers. -->
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.TIME_SET"/>
+                <action android:name="android.intent.action.TIMEZONE_CHANGED"/>
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED"/>
             </intent-filter>
         </receiver>
 
@@ -27,10 +26,25 @@
             android:name=".MainActivity"
             android:exported="false" />
 
-        <!-- Alias for day 01 (enabled by default) -->
+        <!-- Generic first-install launcher entry. It is replaced with today's date
+             as soon as MainActivity runs. -->
+        <activity-alias
+            android:name=".CalendarDefault"
+            android:enabled="true"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher"
+            android:roundIcon="@mipmap/ic_launcher_round"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+
+        <!-- Date aliases are enabled dynamically. -->
         <activity-alias
             android:name=".CalendarDay01"
-            android:enabled="true"
+            android:enabled="false"
             android:exported="true"
             android:icon="@mipmap/ic_calendar_01"
             android:roundIcon="@mipmap/ic_calendar_01"
