@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:padding="16dp"
+    android:padding="@dimen/screen_padding"
     android:gravity="center_horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -13,23 +13,23 @@
 
         <RadioButton
             android:id="@+id/rbEtoG"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/touch_target"
             android:text="Ethiopian → Gregorian"
             android:checked="true"/>
 
         <RadioButton
             android:id="@+id/rbGtoE"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/touch_target"
             android:text="Gregorian → Ethiopian"/>
     </RadioGroup>
 
     <Button
         android:id="@+id/btnPick"
-        android:layout_marginTop="24dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/section_spacing"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/touch_target"
         android:text="PICK DATE"/>
 
     <TextView
