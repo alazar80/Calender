@@ -1,0 +1,8 @@
+{
+  "schemaVersion": "1.0.0",
+  "catalogType": "rss_feed_catalog",
+  "source": "alazar80/aiassistant/app/src/main/assets/news_feeds_catalog.json",
+  "status": "catalog_reference",
+  "canonicalSource": "https://github.com/alazar80/aiassistant/blob/main/app/src/main/assets/news_feeds_catalog.json",
+  "note": "Use the canonical AI Assistant catalog. Do not invent feed URLs from screenshot names."
+}
