@@ -1,35 +1,28 @@
 # Calender (Android — Java)
 
-> Offline **date converter** for Android built with **Java** in **Android Studio**. Converts **Ethiopian (ፊደል / Geʽez) ⇄ Gregorian** dates, shows today in both calendars, and includes simple pickers.
+Offline Ethiopian ⇄ Gregorian date converter. Screens use match_parent + weight so they adapt phones, tablets, foldables, Tizen-class large panels.
 
----
+[Download APK](https://github.com/alazar80/Calender/raw/main/Calender.apk)
 
-## ✨ Features
+## Features
+- Ethiopian ↔ Gregorian
+- Today in Africa/Addis_Ababa
+- Dark theme / Amharic strings
+- Responsive DrawerLayout + ConstraintLayout
 
-- 🇪🇹 **Ethiopian → Gregorian** conversion
-- 🌍 **Gregorian → Ethiopian** conversion
-- 🗓️ “Today” in both calendars (Africa/Addis_Ababa awareness)
-- 📅 Simple date pickers (or manual input)
-- 🌙 Optional dark theme & Amharic UI strings
+## Data partitions (catalog)
+See `docs/partitioned_data_exampless.txt`.
+- P0 input: user dates, locale, theme
+- P1 process: JDN conversion
+- P2 output: calendar UI, APK artifacts
+- P3 metadata: Gradle, manifests, languages
 
----
-[⬇️ Download the APK](https://github.com/alazar80/Calender/raw/main/Calender.apk)
----
+## Languages
+Java (Android). Catalog: all_languages.txt in fitness-medical.
 
-## 🧱 Tech Stack
-
-- **Android Studio** (Gradle Wrapper)
-- **Java** (Android SDK)
-- No network required (pure math, **Julian Day Number** method)
-- UI: AppCompat/Material, `ViewBinding`/`RecyclerView` (if used)
-
----
-![Braydon's GitHub Banner](./calender.png)
----
-
-## 🚀 Quick Start
-
-1. **Clone**
-   ```bash
-   git clone https://github.com/alazar80/Calender.git
-   cd Calender
+## Quick start
+```bash
+git clone https://github.com/alazar80/Calender.git
+cd Calender
+```
+Open in Android Studio. Build APK.

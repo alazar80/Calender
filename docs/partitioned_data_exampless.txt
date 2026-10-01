@@ -1,0 +1,7 @@
+# Universal data partitions for Calender
+P0_INPUT: user date picks, locale, theme, permissions
+P1_PROCESS: Julian Day Number convert, workers, receivers
+P2_OUTPUT: fragments, layouts, APK, icons
+P3_METADATA: Gradle, manifest, strings, languages, CI
+P4_DEVICE: phone, tablet, fold, wear-adjacent, Tizen-like large screens — match_parent, weight, ConstraintLayout
+Apply to files, APIs, DBs, inputs, outputs, metadata.

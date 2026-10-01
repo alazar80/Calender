@@ -4,15 +4,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
 
-    <!-- Vertical container holding Toolbar + content -->
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <!-- AppCompat Toolbar -->
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
@@ -21,64 +20,26 @@
             app:title="@string/app_name"
             app:titleTextColor="@android:color/white"/>
 
-        <!-- Fragment container -->
         <FrameLayout
             android:id="@+id/content_frame"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1">
 
-            <!-- Default “main” UI -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/content_main"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/backgroundColor">
-
-<!--                <TextView-->
-<!--                    android:id="@+id/tvInfo"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="@string/launch_instructions"-->
-<!--                    android:textAppearance="?android:attr/textAppearanceMedium"-->
-<!--                    app:layout_constraintTop_toTopOf="parent"-->
-<!--                    app:layout_constraintStart_toStartOf="parent"-->
-<!--                    app:layout_constraintEnd_toEndOf="parent"-->
-<!--                    android:layout_margin="16dp"/>-->
-
-<!--                <Button-->
-<!--                    android:id="@+id/btnShowDate"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="@string/show_date"-->
-<!--                    app:layout_constraintTop_toBottomOf="@id/tvInfo"-->
-<!--                    app:layout_constraintStart_toStartOf="parent"-->
-<!--                    app:layout_constraintEnd_toEndOf="parent"-->
-<!--                    android:layout_marginTop="32dp"/>-->
-
-<!--                <TextView-->
-<!--                    android:id="@+id/tvDate"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text=""-->
-<!--                    android:textAppearance="?android:attr/textAppearanceLarge"-->
-<!--                    app:layout_constraintTop_toBottomOf="@id/btnShowDate"-->
-<!--                    app:layout_constraintStart_toStartOf="parent"-->
-<!--                    app:layout_constraintEnd_toEndOf="parent"-->
-<!--                    android:layout_marginTop="16dp"/>-->
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
+                android:background="@color/backgroundColor"/>
         </FrameLayout>
     </LinearLayout>
 
-    <!-- Sliding drawer -->
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+        android:maxWidth="320dp"
         app:headerLayout="@layout/nav_header"
-    app:menu="@menu/drawer_menu"/>
-    <!-- your existing drawer_menu.xml -->
-    <!-- your existing nav_header.xml -->
+        app:menu="@menu/drawer_menu"/>
 </androidx.drawerlayout.widget.DrawerLayout>
