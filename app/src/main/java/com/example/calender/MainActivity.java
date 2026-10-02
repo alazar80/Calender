@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -42,6 +43,19 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        show3DSplash(savedInstanceState);
+    }
+
+    private void show3DSplash(Bundle savedInstanceState) {
+        Splash3DView splash = new Splash3DView(this, getString(R.string.app_name));
+        setContentView(splash);
+        splash.start(() -> {
+            if (isFinishing() || isDestroyed()) return;
+            initializeMainContent(savedInstanceState);
+        });
+    }
+
+    private void initializeMainContent(Bundle savedInstanceState) {
         setContentView(R.layout.activity_main);
 
         bindViews();
