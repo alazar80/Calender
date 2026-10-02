@@ -23,4 +23,11 @@ public class ExampleInstrumentedTest {
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
         assertEquals("com.example.calender", appContext.getPackageName());
     }
+    
+    @Test
+    public void splashRendererCanBeCreated() {
+        Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
+        Splash3DView splash = new Splash3DView(appContext, "Calendar");
+        assertNotNull(splash);
+    }
 }
